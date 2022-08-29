@@ -1,0 +1,88 @@
+body {
+    background-image: url("https://cdn.discordapp.com/attachments/820932980599685154/1012668381591253012/hopitalBackground.jpg.png");
+    background-position: 50% 25%;
+    background-attachment: fixed;
+    background-size: 100%;
+    color: rgb(0, 0, 0);
+    font-family: 'Roboto', sans-serif;
+
+}
+
+#Navbar {
+    display: flex;
+    flex-direction: column;
+}
+
+#Navbar ul {
+    margin: auto;
+    margin-top: 2rem;
+}
+
+#presentation{
+    display: flex;
+    justify-content: center;
+}
+
+#imgAcceuil {
+    margin-top: 5rem;
+    width: 45%;
+    border: #4e78b7 solid 10px;
+}
+
+
+#addPatientForm {
+    margin-left: 20%;
+    margin-right: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+    margin-top: 5rem;
+    border: #4e78b7 solid 10px;
+    background-color: #fff;
+}
+
+#addPatientForm label {
+    margin-top: 2rem;
+}
+
+#addPatientForm input {
+    height: 2rem;
+}
+
+#buttonPatientForm:hover {
+    background-color: #8dffaf;
+}
+
+#buttonPatientForm {
+    border: #004916 solid 2px;
+    background-color: rgb(11, 202, 59);
+    margin-top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    height: 2rem;
+    width: 30%;
+}
+
+a {
+    border-top-left-radius: 15%;
+    border-bottom-right-radius: 15%;
+    text-decoration: none;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.736);
+    padding: 0.8rem;
+}
+
+a:hover {
+    color: aqua;
+}
+
+th {
+    border: 2px solid white;
+}
+
+.border {
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
+}
