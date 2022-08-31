@@ -42,25 +42,4 @@ class Db {
         $result = $queryResult->fetchAll(PDO::FETCH_OBJ);
         return $result;
     }
-
-    protected function postFormResult($query)
-    {
-        //préparation de la commande sql et sécurisation des données.
-        $stmt = $this->pdo->prepare('INSERT INTO `patients`(lastname, firstname, birthdate, phone, mail) VALUES (:lastname, :firstname, :birthdate, :phone, :mail)');
-        if (isset($_POST['lastname'],$_POST['firstname'],$_POST['birthdate'],$_POST['phone'],$_POST['mail'])) {
-            $lastname = htmlspecialchars($_POST['lastname']);
-            $firstname = htmlspecialchars($_POST['firstname']);
-            $birthdate = htmlspecialchars($_POST['birthdate']);
-            $phone = htmlspecialchars($_POST['phone']);
-            $mail = htmlspecialchars($_POST['mail']);
-        }
-        //execution des données préparés
-        $stmt->execute(array(
-            'lastname'=>$lastname,
-            'firstname'=>$firstname,
-            'birthdate'=>$birthdate,
-            'phone'=>$phone,
-            'mail'=>$mail
-        ));
-    }
 }

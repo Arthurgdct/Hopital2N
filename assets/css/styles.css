@@ -5,16 +5,18 @@ body {
     background-size: 100%;
     color: rgb(0, 0, 0);
     font-family: 'Roboto', sans-serif;
-
 }
 
 #Navbar {
+    list-style: none;
     display: flex;
     flex-direction: column;
 }
 
-#Navbar ul {
-    margin: auto;
+#Navbar li {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
     margin-top: 2rem;
 }
 
@@ -63,8 +65,10 @@ body {
     height: 2rem;
     width: 30%;
 }
-
-a {
+.textRed{
+    color: red;
+}
+.navButton {
     border-top-left-radius: 15%;
     border-bottom-right-radius: 15%;
     text-decoration: none;
@@ -77,12 +81,32 @@ a:hover {
     color: aqua;
 }
 
+.tablePatient{
+    margin-top: 2rem;
+    width: 40rem;
+    background-color: #fff;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+}
+
 th {
-    border: 2px solid white;
+    border: 2px solid #000;
 }
 
 .border {
-    border-left: 2px solid white;
-    border-right: 2px solid white;
-    border-bottom: 2px solid white;
+    border-left: 2px solid #000;
+    border-right: 2px solid #000;
+    border-bottom: 2px solid #000;
+}
+
+.notfound{
+    background-color: red;
+    color: #fff;
+    font-size: 2rem;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30rem;
+    margin-top: 15rem;
 }

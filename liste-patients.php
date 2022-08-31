@@ -17,16 +17,16 @@ require 'controllers/liste-patientsCtrl.php';
 <body>
     <header>
         <nav>
-            <li id="Navbar">
-                <ul><a href="index.php">Acceuil</a></ul>
-                <ul><a href="ajout-patient.php">Ajouter un patient</a></ul>
-                <ul><a href="ajout-rendez-vous.php">Ajouter un rendez-vous</a></ul>
-                <ul><a href="ajout-patient-rendez-vous.php">Ajouter un patient et un rendez-vous</a></ul>
-            </li>
+            <ul id="Navbar">
+                <li><a class="navButton" href="index.php">Acceuil</a></li>
+                <li><a class="navButton" href="ajout-patient.php">Ajouter un patient</a></li>
+                <li><a class="navButton" href="ajout-rendez-vous.php">Ajouter un rendez-vous</a></li>
+                <li><a class="navButton" href="ajout-patient-rendez-vous.php">Ajouter un patient et un rendez-vous</a></li>
+            </ul>
         </nav>
     </header>
     <main>
-        <table>
+        <table class="tablePatient">
             <thead>
                 <tr>
                     <th>Nom</th>
@@ -36,15 +36,12 @@ require 'controllers/liste-patientsCtrl.php';
             </thead>
             <tbody>
                 <?php
+                ;
                 foreach ($patientList as $patient) { ?>
                     <tr>
                         <td class="border"><?= $patient->lastname ?></td>
                         <td class="border"><?= $patient->firstname ?></td>
-                        <td><button type="submit" formmethod="get" value="Selectionnez">Selectionnez</button></td>
-                    <?php if (isset($_GET['Selectionnez'])) {
-                        $patientId = $patient->id;
-                        var_dump($patientId);
-                    } ?>
+                        <td class="border"><a href="profil-patient.php?id=<?= $patient->id ?>">Fiche Patient</a></td>
                     </tr>
                 <?php } ?>
             </tbody>

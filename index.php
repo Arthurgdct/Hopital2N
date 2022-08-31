@@ -15,13 +15,13 @@
 <body>
     <header>
         <nav>
-            <li id="Navbar">
-                <ul><a href="index.php">Acceuil</a></ul>
-                <ul><a href="ajout-patient.php">Ajouter un patient</a></ul>
-                <ul><a href="liste-patients.php">Consulter la liste des patients</a></ul>
-                <ul><a href="ajout-rendez-vous.php">Ajouter un rendez-vous</a></ul>
-                <ul><a href="ajout-patient-rendez-vous.php">Ajouter un patient et un rendez-vous</a></ul>
-            </li>
+            <ul id="Navbar">
+                <li><a class="navButton" href="index.php">Acceuil</a></li>
+                <li><a class="navButton" href="ajout-patient.php">Ajouter un patient</a></li>
+                <li><a class="navButton" href="liste-patients.php">Consulter la liste des patients</a></li>
+                <li><a class="navButton" href="ajout-rendez-vous.php">Ajouter un rendez-vous</a></li>
+                <li><a class="navButton" href="ajout-patient-rendez-vous.php">Ajouter un patient et un rendez-vous</a></li>
+            </ul>
         </nav>
     </header>
     <main>

@@ -1,7 +1,7 @@
 <?php
 require 'models/Db.php';
 require 'models/Patient.php';
-require 'controllers/liste-patientsCtrl.php';
+require 'controllers/profil-patientCtrl.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
@@ -17,38 +17,40 @@ require 'controllers/liste-patientsCtrl.php';
 <body>
     <header>
         <nav>
-            <li>
-                <ul> <a href="index.php">Acceuil</a></ul>
-                <ul> <a href="ajout-patient.php">Ajouter un patient</a></ul>
-                <ul> <a href="ajout-rendez-vous.php">Ajouter un rendez-vous</a></ul>
-                <ul><a href="ajout-patient-rendez-vous.php">Ajouter un patient et un rendez-vous</a></ul>
-            </li>
+            <ul id="Navbar">
+                <li><a class="navButton" href="index.php">Acceuil</a></li>
+                <li><a class="navButton" href="ajout-patient.php">Ajouter un patient</a></li>
+                <li><a class="navButton" href="ajout-rendez-vous.php">Ajouter un rendez-vous</a></li>
+                <li><a class="navButton" href="ajout-patient-rendez-vous.php">Ajouter un patient et un rendez-vous</a></li>
+            </ul>
         </nav>
     </header>
     <main>
-        <table>
-            <thead>
-                <tr>
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>Date de naissance</th>
-                    <th>Téléphonne</th>
-                    <th>Email</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                foreach ($patientList as $patient) { ?>
+        <?php if (isset($match)) { ?>
+            <table class="tablePatient">
+                <thead>
                     <tr>
-                        <td class="border"><?= $patient->lastname ?></td>
-                        <td class="border"><?= $patient->firstname ?></td>
-                        <td class="border"><?= $patient->birthdate ?></td>
-                        <td class="border"><?= $patient->phone ?></td>
-                        <td class="border"><?= $patient->mail ?></td>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Date de naissance</th>
+                        <th>Téléphonne</th>
+                        <th>Email</th>
                     </tr>
-                <?php } ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <tr>
+                    <?php var_dump(!$patient->getId($id)) ?>
+                        <td class="border"><?= $patientbyid->lastname ?></td>
+                        <td class="border"><?= $patientbyid->firstname ?></td>
+                        <td class="border"><?= $patientbyid->birthdate ?></td>
+                        <td class="border"><?= $patientbyid->phone ?></td>
+                        <td class="border"><?= $patientbyid->mail ?></td>
+                    </tr>
+                </tbody>
+            </table>
+        <?php }else{ ?>
+            <?= $errors['id'] ?>
+       <?php } ?>
     </main>
 </body>
 
