@@ -1,7 +1,4 @@
 <?php
-
-use LDAP\Result;
-
 class Patient extends Db
 {
     public int $id;
@@ -64,9 +61,9 @@ class Patient extends Db
         return $result->number;
     }
 
-    public function getPatientList(): array
+    public function getPatientListByOrder(): array
     {
-        $query = 'SELECT `lastname`,`firstname`,`birthdate`,`phone`,`mail` FROM `patients`';
+        $query = 'SELECT `id`, `lastname`,`firstname`,`birthdate`,`phone`,`mail` FROM `patients` ORDER BY `lastname` ASC';
         return $this->getQueryResult($query);
     }
 
@@ -81,11 +78,25 @@ class Patient extends Db
 
     public function idExist($id): bool
     {
-        $query = 'SELECT COUNT(*) AS `number` FROM `patients`WHERE `id`= :id';
+        $query = 'SELECT COUNT(*) AS `number` FROM `patients` WHERE `id`= :id';
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id',$id,PDO::PARAM_INT);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_OBJ);
         return $result->number;
     }
+
+    public function updatePatient($id)
+    {
+        $query = 'UPDATE `patients` SET `lastname` = :lastname, `firstname` = :firstname,`birthdate` = :birthdate, `phone` = :phone, `mail` = :mail WHERE `id` = :id';
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id',$id,PDO::PARAM_INT);
+        $stmt->bindParam(':firstname', $this->firstname, PDO::PARAM_STR);
+        $stmt->bindParam(':lastname', $this->lastname, PDO::PARAM_STR);
+        $stmt->bindParam(':birthdate', $this->birthdate, PDO::PARAM_STR);
+        $stmt->bindParam(':phone', $this->phone, PDO::PARAM_STR);
+        $stmt->bindParam(':mail', $this->mail, PDO::PARAM_STR);
+        $stmt->execute();
+    }
+
 }

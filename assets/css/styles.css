@@ -32,7 +32,7 @@ body {
 }
 
 
-#addPatientForm {
+.addPatientForm {
     margin-left: 20%;
     margin-right: 20%;
     display: flex;
@@ -44,19 +44,19 @@ body {
     background-color: #fff;
 }
 
-#addPatientForm label {
+.addPatientForm label {
     margin-top: 2rem;
 }
 
-#addPatientForm input {
+.addPatientForm input {
     height: 2rem;
 }
 
-#buttonPatientForm:hover {
+.buttonPatientForm:hover {
     background-color: #8dffaf;
 }
 
-#buttonPatientForm {
+.buttonPatientForm {
     border: #004916 solid 2px;
     background-color: rgb(11, 202, 59);
     margin-top: 1rem;
@@ -64,6 +64,13 @@ body {
     margin-right: auto;
     height: 2rem;
     width: 30%;
+}
+
+#modifButton{
+    width: 10rem;
+    padding-top: 1rem;
+    display: flex;
+    justify-content: center;
 }
 .textRed{
     color: red;

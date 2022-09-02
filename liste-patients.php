@@ -20,7 +20,7 @@ require 'controllers/liste-patientsCtrl.php';
             <ul id="Navbar">
                 <li><a class="navButton" href="index.php">Acceuil</a></li>
                 <li><a class="navButton" href="ajout-patient.php">Ajouter un patient</a></li>
-                <li><a class="navButton" href="ajout-rendez-vous.php">Ajouter un rendez-vous</a></li>
+                <li><a class="navButton" href="rendez-vous.php">Ajouter un rendez-vous</a></li>
                 <li><a class="navButton" href="ajout-patient-rendez-vous.php">Ajouter un patient et un rendez-vous</a></li>
             </ul>
         </nav>

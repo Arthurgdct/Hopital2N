@@ -21,14 +21,14 @@ require 'controllers/ajout-patientCtrl.php';
             <ul id="Navbar">
                 <li><a class="navButton" href="index.php">Acceuil</a></li>
                 <li><a class="navButton" href="liste-patients.php">Consulter la liste des patients</a></li>
-                <li><a class="navButton" href="ajout-rendez-vous.php">Ajouter un rendez-vous</a></li>
+                <li><a class="navButton" href="rendez-vous.php">Ajouter un rendez-vous</a></li>
                 <li><a class="navButton" href="ajout-patient-rendez-vous.php">Ajouter un patient et un rendez-vous</a></li>
             </ul>
         </nav>
     </header>
     <main>
         <section>
-            <form id="addPatientForm" method="post">
+            <form class="addPatientForm" method="post">
 
                 <label for="lastname">Nom du patient:</label>
                 <input type="text" id="lastname" name="lastname" value="<?php if (isset($_POST['lastname'])) { echo $_POST['lastname'];} ?>">
@@ -53,7 +53,7 @@ require 'controllers/ajout-patientCtrl.php';
                 if (isset($message)) { ?>
                     <p><?= $message ?></p><?php } ?>
                 <p class="textRed"><?= isset($errors['patientRegister']) ? $errors['patientRegister'] : '' ?></p>
-                <input name="validForm" id="buttonPatientForm" type="submit" value="Ajouter le patient">
+                <input name="validForm" class="buttonPatientForm" type="submit" value="Ajouter le patient">
             </form>
         </section>
     </main>

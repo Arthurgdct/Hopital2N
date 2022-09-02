@@ -1,5 +1,13 @@
+<?php
+
+declare(strict_types=1);
+require 'models/Db.php';
+require 'models/Patient.php';
+require 'models/Appointment.php';
+require 'controllers/rendezvousCtrl.php';
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -19,15 +27,25 @@
                 <li><a class="navButton" href="index.php">Acceuil</a></li>
                 <li><a class="navButton" href="ajout-patient.php">Ajouter un patient</a></li>
                 <li><a class="navButton" href="liste-patients.php">Consulter la liste des patients</a></li>
-                <li><a class="navButton" href="rendez-vous.php">Ajouter un rendez-vous</a></li>
                 <li><a class="navButton" href="ajout-patient-rendez-vous.php">Ajouter un patient et un rendez-vous</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <section id="presentation">
-            <img id="imgAcceuil" src="assets/img/Medecinacceuil.png" alt="Bienvenue sur Hopital2N le gestionnaire de patient 2.0">
-        </section>
+        <form class="addPatientForm" method="post">
+            <label for="patientInfo">Choix du patient:</label>
+            <select name="patientInfo">
+                <?php foreach ($patientList as $patient) {
+                ?><option value="<?= $patient->id ?>"><?= $patient->lastname ?> <?= $patient->firstname ?> <?= $patient->birthdate ?></option>
+                <?php } ?></select>
+            <p class="textRed"><?= isset($errors['id']) ? $errors['id'] : '' ?></p>
+            <label for="dateHour">Date et heure du rendez-vous:</label>
+            <input type="datetime-local" id="dateHour" name="dateHour">
+            <p class="textRed"><?= isset($errors['formatDateHour']) ? $errors['formatDateHour'] : '' ?></p>
+
+
+            <input name="validForm" class="buttonPatientForm" type="submit" value="Ajouter le patient">
+        </form>
     </main>
 </body>
 
