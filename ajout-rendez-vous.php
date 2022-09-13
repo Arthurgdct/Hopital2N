@@ -1,5 +1,13 @@
+<?php
+
+declare(strict_types=1);
+require 'models/Db.php';
+require 'models/Patient.php';
+require 'models/Appointment.php';
+require 'controllers/ajoutrendezvousCtrl.php';
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -9,12 +17,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <title>Hopital - Acceuil</title>
+    <title>Hopital - Ajout de rendez-vous</title>
 </head>
 
 <body>
     <header>
-        <nav class="navBar">
+    <nav class="navBar">
             <a class="buttonNav" href="index.php">Acceuil</a>
             <div class="dropDown">
                 <button class="buttonNavDrop">Patients</button>
@@ -32,13 +40,24 @@
                     <a class="navLink" href="ajout-patient-rendez-vous.php">Ajouter un patient et un rendez-vous</a>
                 </div>
             </div>
-            <h1>Acceuil</h1>
+            <h1>Ajout rendez-vous</h1>
         </nav>
     </header>
     <main>
-        <section id="presentation">
-            <img id="imgAcceuil" src="assets/img/Medecinacceuil.png" alt="Bienvenue sur Hopital2N le gestionnaire de patient 2.0">
-        </section>
+        <form class="addPatientForm" method="post">
+            <label for="patientInfo">Choix du patient:</label>
+            <select name="patientInfo">
+                <?php foreach ($patientList as $patient) {
+                ?><option value="<?= $patient->id ?>"><?= $patient->lastname ?> <?= $patient->firstname ?> <?= $patient->birthdate ?></option>
+                <?php } ?></select>
+            <p class="textRed"><?= isset($errors['id']) ? $errors['id'] : '' ?></p>
+            <label for="dateHour">Date et heure du rendez-vous:</label>
+            <input type="datetime-local" id="dateHour" name="dateHour">
+            <p class="textRed"><?= isset($errors['formatDateHour']) ? $errors['formatDateHour'] : '' ?></p>
+
+
+            <input name="validForm" class="buttonPatientForm" type="submit" value="Ajouter le rendez-vous">
+        </form>
     </main>
 </body>
 

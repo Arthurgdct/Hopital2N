@@ -1,37 +1,129 @@
 body {
-    background-image: url("https://cdn.discordapp.com/attachments/820932980599685154/1012668381591253012/hopitalBackground.jpg.png");
-    background-position: 50% 25%;
-    background-attachment: fixed;
-    background-size: 100%;
-    color: rgb(0, 0, 0);
+    margin: 0;
+    background-image: url('https://www.wallpapertip.com/wmimgs/11-119918_background-for-hospital-website.png');
     font-family: 'Roboto', sans-serif;
 }
 
-#Navbar {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-}
-
-#Navbar li {
-    margin-left: auto;
-    margin-right: auto;
+/*Début du css NavBar*/
+header {
     text-align: center;
-    margin-top: 2rem;
+    margin-right: auto;
+    margin-left: auto;
 }
 
-#presentation{
+.navBar {
+    display: flex;
+    background-color: #1486e9;
+}
+.sreachNav{
+    padding: 9px;
+    font-size: 30px;
+    border-right: #2857f3 1px solid;
+}
+
+.buttonNav {
+    text-decoration: none;
+    background-color: #1486e9;
+    color: white;
+    border: none;
+    border-right: #2857f3 1px solid;
+    padding: 8px;
+    padding-top: 11px;
+    font-size: 30px;
+}
+
+.buttonNavDrop {
+    background-color: #1486e9;
+    color: white;
+    border: none;
+    border-right: #2857f3 1px solid;
+    padding: 10px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.buttonNavDrop:hover {
+    background-color: #2857f3;
+    color: aqua
+}
+
+.buttonNav:hover {
+    background-color: #2857f3;
+}
+
+.dropDown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropDownChild {
+    position: absolute;
+    display: none;
+    background-color: #ffffff;
+    min-width: 50px;
+}
+
+.dropDownChild a {
+    color: white;
+    padding: 20px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropDown:hover .dropDownChild {
+    display: block;
+}
+
+.navLink {
+    background-color: rgba(0, 0, 0, 0.736);
+}
+
+/*css général et id*/
+#presentation {
     display: flex;
     justify-content: center;
 }
 
 #imgAcceuil {
-    margin-top: 5rem;
+    margin-top: 10rem;
     width: 45%;
     border: #4e78b7 solid 10px;
 }
+a:hover {
+    color: aqua;
+}
 
-
+.littleCard{
+    font-size: 1.5rem;
+    color: #fff;
+    border: #fff solid 1rem;
+    padding: 4rem;
+    width: 15rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    background-color: #4e78b7;
+}
+h2{
+    width: 30rem;
+    text-align: center;
+    color: #fff;
+    margin-top: 4rem;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 2rem;
+    background-color: #1486e9;
+}
+h1{
+    margin-top: 10px;
+    margin-right: 1rem;
+    margin-left: auto;
+    margin-bottom: 0;
+    text-align: center;
+    color: #fff;
+    font-size: 2rem;
+}
+/*Css des formulaires*/
 .addPatientForm {
     margin-left: 20%;
     margin-right: 20%;
@@ -66,48 +158,75 @@ body {
     width: 30%;
 }
 
-#modifButton{
+#modifButton {
     width: 10rem;
     padding-top: 1rem;
     display: flex;
     justify-content: center;
 }
-.textRed{
+
+.textRed {
     color: red;
 }
-.navButton {
-    border-top-left-radius: 15%;
-    border-bottom-right-radius: 15%;
-    text-decoration: none;
-    color: #fff;
-    background-color: rgba(0, 0, 0, 0.736);
-    padding: 0.8rem;
+
+/*Pagination*/
+.pagination{
+    justify-content: center;
+    display: flex;
+}
+.btnPagination a img {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+.btnPagination a {
+    margin-bottom: 0.5rem;
 }
 
-a:hover {
-    color: aqua;
+.btnPagination{
+    box-shadow: 10px 5px 5px #1486e9;
+    border-radius: 25%;
+    padding-right: 8px;
+    padding-left: 8px;
+    margin: 1rem;
+    padding-top: 8px;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    list-style: none;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
 }
 
-.tablePatient{
-    margin-top: 2rem;
+.btnPagination .disabled{
+    pointer-events: none;
+}
+/*Tableau d'affichage*/
+.tablePatient {
+    margin-top: 4rem;
     width: 40rem;
     background-color: #fff;
     margin-left: auto;
     margin-right: auto;
     border-collapse: collapse;
+    text-align: center;
 }
 
 th {
     border: 2px solid #000;
+    height: 4rem;
 }
+td{
+    height: 4rem;
+}
+
 
 .border {
     border-left: 2px solid #000;
     border-right: 2px solid #000;
     border-bottom: 2px solid #000;
 }
-
-.notfound{
+/*messages d'erreurs ou de succes*/
+.notfound {
     background-color: red;
     color: #fff;
     font-size: 2rem;
@@ -116,4 +235,9 @@ th {
     margin-right: auto;
     width: 30rem;
     margin-top: 15rem;
+}
+
+.textGreen{
+    color: #0ab33d;
+    font-size: 1.5rem;
 }

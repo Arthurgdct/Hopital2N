@@ -4,6 +4,14 @@ $regexPhone = "/^0[1-79][0-9]{8}$/";
 $patient = new Patient;
 $patientsList = $patient->getPatientsList();
 $errors = [];
+$appointment = new Appointment;
+$appointmentInfo = $appointment->getAppointmentsTime($_GET['id']);
+
+function dateHourFormat($date, $formatInput,$formatOuput)
+{
+    $d = DateTime::createFromFormat($formatInput, $date);
+    return $d->format($formatOuput);
+}
 
 if (isset($_GET['id'])) {
     $id = htmlspecialchars($_GET['id']);

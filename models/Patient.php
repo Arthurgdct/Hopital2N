@@ -99,4 +99,45 @@ class Patient extends Db
         $stmt->execute();
     }
 
+    public function SupprAppointment($idPatientToSuppr)
+    {
+        $query = 'DELETE FROM `appointments` WHERE `idPatients` = :id';
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id',$idPatientToSuppr,PDO::PARAM_INT);
+        $stmt->execute();
+
+    }
+    public function SupprPatients($idPatientToSuppr)
+    {
+        $query = 'DELETE FROM `patients` WHERE `id` = :id';
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':id',$idPatientToSuppr,PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
+    public function SupprAppointmentAndPatient($idPatientToSuppr)
+    {
+        $this->SupprAppointment($idPatientToSuppr);
+        $this->SupprPatients($idPatientToSuppr);
+    }
+
+    public function getPatientSreach($sreach)
+    {
+        $query = 'SELECT `id`, `lastname`,`firstname`,`birthdate`,`phone`,`mail` FROM `patients` WHERE `lastname` LIKE CONCAT("%", :sreach, "%") OR `firstname` LIKE CONCAT("%", :sreach, "%") ORDER BY `lastname` ASC';
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':sreach',$sreach,PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function pagination($offset)
+    {
+        // $query = 'SELECT `id`, `lastname`,`firstname`,`birthdate`,`phone`,`mail` FROM `patients` WHERE `lastname` LIKE CONCAT("%", :sreach, "%") OR `firstname` LIKE CONCAT("%", :sreach, "%") ORDER BY `lastname` ASC LIMIT :idpage - 10, :idpage + 10';
+        $query = 'SELECT `id`, `lastname`,`firstname`,`birthdate`,`phone`,`mail` FROM `patients` ORDER BY `lastname` ASC LIMIT :offset, 3';
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+        //$stmt->bindParam(':sreach', $sreach, PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetchAll(pdo::FETCH_OBJ);
+    }
 }

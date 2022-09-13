@@ -1,3 +1,8 @@
+<?php
+require 'models/Db.php';
+require 'models/Appointment.php';
+require 'controllers/liste-rendezvousCtrl.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <title>Hopital - Acceuil</title>
+    <title>Hopital - Liste rendez-vous</title>
 </head>
 
 <body>
@@ -32,13 +37,36 @@
                     <a class="navLink" href="ajout-patient-rendez-vous.php">Ajouter un patient et un rendez-vous</a>
                 </div>
             </div>
-            <h1>Acceuil</h1>
+            <h1>Liste rendez-vous</h1>
         </nav>
     </header>
     <main>
-        <section id="presentation">
-            <img id="imgAcceuil" src="assets/img/Medecinacceuil.png" alt="Bienvenue sur Hopital2N le gestionnaire de patient 2.0">
-        </section>
+
+        <table class="tablePatient">
+            <thead>
+                <tr>
+                    <th>Prénom</th>
+                    <th>Nom</th>
+                    <th>Date et heure du rendez-vous</th>
+                    <th>Informations Supplémentaires</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($appointmentList as $appointment) { ?>
+                    <tr>
+                        <td class="border"><?= $appointment->firstname ?></td>
+                        <td class="border"><?= $appointment->lastname ?></td>
+                        <td class="border"><?= dateHourFormat($appointment->dateHour, 'Y-m-d H:i:s', 'd/m/Y H:i') ?></td>
+                        <td class="border"><a href="rendez-vous.php?id=<?= $appointment->id ?>">En savoir plus</a></td>
+                        <td class="border"><a href="liste-rendez-vous.php?suppr=<?= $appointment->id ?>">Supprimez</a></td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+        <?php if (empty($appointmentList)) { ?>
+            <p class="notfound">Vacances ou chômage Inc</p>
+        <?php } ?>
     </main>
 </body>
 
